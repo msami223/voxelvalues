@@ -1,0 +1,34 @@
+# WordPress cache and temporary files
+cache/
+*.log
+
+# System files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.sql
+*.sql.gz
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if any plugin uses them)
+node_modules/
+package-lock.json
+
+# Specific WordPress files to ignore
+upgrade/
+uploads/wc-logs/
+
+# Keep .gitignore itself
+!.gitignore

@@ -1,0 +1,1776 @@
+/*
+Theme Name: Voxel Values
+Theme URI: https://generatepress.com
+Description: Child theme for Voxel Values (Roblox Trading Site)
+Author: Voxel Values
+Template: generatepress
+Version: 0.1
+*/
+
+/* Custom Variables */
+:root {
+    --color-voxel-bg: #000000;
+    --color-voxel-card: #0a0a0a;
+    --color-voxel-border: #1f1f1f;
+    --color-voxel-text: #ffffff;
+    --color-voxel-subtext: #9ca3af;
+    --color-voxel-accent: #8b5cf6;
+    --font-primary: 'Outfit', sans-serif;
+    --radius-md: 12px;
+}
+
+/* Base Styles */
+body {
+    background-color: var(--color-voxel-bg);
+    color: var(--color-voxel-text);
+    font-family: var(--font-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* GLOBAL DARK THEME OVERRIDES (GeneratePress) */
+.site-header,
+.site-content,
+.inside-article,
+.sidebar,
+.widget,
+.comments-area {
+    background-color: transparent !important;
+}
+
+.inside-article {
+    padding: 0 !important;
+    /* Remove default padding */
+}
+
+.entry-title,
+.site-branding a,
+.main-navigation a {
+    color: var(--color-voxel-text) !important;
+}
+
+/* Remove GP Separators */
+.separating-space {
+    margin-bottom: 2rem;
+}
+
+.site-footer {
+    margin-top: auto;
+}
+
+/* Only override the grid-container width on item and game pages */
+/* 1. General Grid Container (Header, Footer, Page Wrapper) - Keep Wide */
+.single-item .grid-container,
+.single-game .grid-container,
+.post-type-archive-game .grid-container {
+    max-width: 900px !important;
+    width: 100% !important;
+    /* Fix for flexbox layout collapse */
+}
+
+
+/* =========================================
+   APP HEADER STYLES (Moved from Inline)
+   ========================================= */
+.app-header {
+    background: #050505;
+    border-bottom: 1px solid #1a1a1a;
+    height: 72px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.app-header-container {
+    width: 100%;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Sections */
+.header-section {
+    display: flex;
+    align-items: center;
+}
+
+.header-section.left {
+    gap: 20px;
+    flex: 0 0 auto;
+}
+
+.header-section.center {
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
+}
+
+.header-section.right {
+    gap: 16px;
+    flex: 0 0 auto;
+}
+
+/* 1. Left Elements */
+.brand-logo {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-switcher-pill {
+    background: #111;
+    border: 1px solid #222;
+    padding: 6px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.game-switcher-pill:hover {
+    border-color: #333;
+    background: #161616;
+}
+
+.gs-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.gs-current {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.gs-label {
+    font-size: 0.65rem;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+/* 2. Center Nav Items */
+.nav-icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 6px;
+    opacity: 0.6;
+    transition: 0.2s;
+    position: relative;
+    padding: 4px 0;
+    color: white !important;
+    /* Force white text */
+}
+
+.nav-icon-link:hover,
+.nav-icon-link.active {
+    opacity: 1;
+    color: white !important;
+}
+
+.icon-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+.link-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.nav-icon-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    /* Pull it down to border */
+    width: 100%;
+    height: 3px;
+    background: var(--color-voxel-accent);
+    box-shadow: 0 -2px 10px var(--color-voxel-accent);
+    border-radius: 3px 3px 0 0;
+}
+
+/* 3. Right Elements */
+.discord-btn {
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.discord-btn:hover {
+    opacity: 1;
+}
+
+.login-btn {
+    background: var(--color-voxel-accent);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    background: #7c3aed;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    transform: translateY(-1px);
+    color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .link-text {
+        display: none;
+    }
+
+    /* Show only icons on tablet */
+    .header-section.center {
+        gap: 20px;
+    }
+
+    .gs-label {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-section.center {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #050505;
+        border-top: 1px solid #222;
+        padding: 10px;
+        z-index: 2000;
+        justify-content: space-around;
+    }
+
+    .app-header {
+        padding: 0 12px;
+    }
+
+    .nav-icon-link.active::after {
+        top: 0;
+        bottom: auto;
+    }
+}
+
+/* 2. Content Area Specifically - Set to 900px */
+.single-item #primary.grid-container,
+.single-game #primary.grid-container,
+.post-type-archive-game #primary.grid-container {
+    max-width: 900px !important;
+}
+
+/* ========================================
+   ITEM DETAIL PAGE STYLES
+   ======================================== */
+
+/* The main card container */
+.voxel-item-card {
+    background-color: var(--color-voxel-card);
+    border: 1px solid var(--color-voxel-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 2rem auto;
+    box-sizing: border-box;
+}
+
+/* Two-column grid: Image + Stats */
+.voxel-item-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Image container */
+.voxel-item-image img {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-voxel-border);
+    background: #111;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Stats grid - 2 columns */
+.voxel-item-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-content: start;
+}
+
+/* Individual stat box */
+.stat-box {
+    background: #111;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-voxel-border);
+    transition: all 0.2s ease;
+}
+
+.stat-box:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+    border-color: var(--color-voxel-accent);
+}
+
+.stat-box .label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-voxel-subtext);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+}
+
+.stat-box .value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Game badge */
+.voxel-game-badge {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #333;
+}
+
+/* Title */
+.entry-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Chart container - full width at bottom */
+.voxel-chart-container {
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--color-voxel-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   COSMIC APP UI (Custom Game Hub)
+   ======================================== */
+
+/* Main Layout Wrapper */
+.cosmic-app-wrapper {
+    width: 100%;
+    min-height: 80vh;
+    background-color: #000;
+}
+
+.cosmic-container {
+    max-width: 900px !important;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1. Hero Section */
+.cosmic-hero {
+    padding: 60px 0 40px;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, #000 70%);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+    letter-spacing: -1px;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.meta-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: #aeaeae;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 2. Search Section (Clean, Prominent) */
+.cosmic-search-section {
+    margin-bottom: 3rem;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.main-search-input {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 2px solid rgba(139, 92, 246, 0.3) !important;
+    padding: 16px 20px 16px 50px !important;
+    border-radius: 50px !important;
+    color: #fff !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.main-search-input:focus {
+    outline: none !important;
+    border-color: var(--color-voxel-accent) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3) !important;
+}
+
+.main-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.search-icon-svg {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(139, 92, 246, 0.6);
+    pointer-events: none;
+}
+
+/* Filters & Sort Section */
+.cosmic-filters-section {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+.filters-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.filter-label {
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.filter-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sort-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-group label {
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.sort-dropdown {
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+.sort-dropdown:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+.sort-dropdown:focus {
+    outline: none;
+    border-color: var(--color-voxel-accent);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* OLD TOOLBAR STYLES - KEEP FOR NOW */
+
+/* 2. Toolbar (Search & Filter) */
+.cosmic-toolbar {
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+.toolbar-inner {
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* Stack Search and Tabs */
+    gap: 15px;
+}
+
+.cosmic-search-row {
+    width: 100%;
+}
+
+.cosmic-search {
+    position: relative;
+    width: 100%;
+    /* Full width search */
+}
+
+.search-input {
+    width: 100%;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 10px 12px 40px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.filter-chips {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    /* Align tabs left */
+    overflow-x: auto;
+    /* Allow scrolling if many tabs */
+    /* Space for scrollbar if needed */
+}
+
+.chip {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    text-decoration: none;
+    /* Ensure link underline is gone */
+    white-space: nowrap;
+}
+
+.chip:hover,
+.chip.active {
+    background: var(--color-voxel-accent);
+    border-color: var(--color-voxel-accent);
+    color: #fff;
+}
+
+/* 3. Cosmic Grid */
+.cosmic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Reduced from 180px */
+    gap: 16px;
+    padding-bottom: 60px;
+}
+
+/* 4. Cosmic Card (Exact Style) */
+.cosmic-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 12px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cosmic-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-voxel-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.card-visual {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    overflow: hidden;
+}
+
+.card-visual img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 130px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.info-title {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-weight: 700;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+.highlight-row {
+    background: rgba(139, 92, 246, 0.1);
+    padding: 6px 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.label {
+    color: #888;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.data {
+    color: #fff;
+    font-weight: 600;
+}
+
+.data.val {
+    color: var(--color-voxel-accent);
+}
+
+.data.demand-high {
+    color: #10b981;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+    border-top: 1px solid #222;
+    padding-top: 8px;
+}
+
+.mini-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-stat .l {
+    font-size: 0.65rem;
+    color: #666;
+}
+
+.mini-stat .d {
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+.badge.new {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Game Archive Specific Styles */
+.games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.game-card .card-visual {
+    height: 180px;
+}
+
+.game-description {
+    font-size: 0.85rem;
+    color: var(--color-voxel-subtext);
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.game-meta {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #222;
+}
+
+
+
+/* Clean up logic for stats */
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+.stat-group:last-child {
+    margin-right: 0;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: var(--color-voxel-subtext);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-val {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.value-highlight {
+    color: var(--color-voxel-accent);
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+}
+
+/* =========================================
+   TRADE INTERFACE STYLES (Finally)
+   ========================================= */
+.trade-interface-wrapper {
+    padding: 40px 0 80px 0;
+    min-height: 80vh;
+}
+
+.trade-header {
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.page-subtitle {
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+/* Two Column Grid */
+.trade-sides-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 30px;
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.trade-side {
+    flex: 1;
+    position: relative;
+    padding: 32px 16px 0 16px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Badges */
+.side-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111;
+    border: 1px solid #333;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.badge-have {
+    color: #a78bfa;
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.badge-want {
+    color: #f472b6;
+    border-color: rgba(236, 72, 153, 0.3);
+}
+
+/* Item Grid */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    min-height: 350px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.item-slot {
+    aspect-ratio: 1;
+    background: #111;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    /* Only transition specific properties */
+    cursor: pointer;
+    position: relative;
+    /* Ensure absolute children are positioned relative to this */
+    min-height: 0;
+    /* Prevent flex items from overflowing */
+}
+
+.item-slot.filled-slot {
+    background: #161616;
+    border-color: #333;
+}
+
+.empty-slot {
+    background: #0f0f0f;
+    border-style: dashed;
+    border-color: #262626;
+}
+
+.add-slot {
+    background: rgba(139, 92, 246, 0.1);
+    /* light purple tint */
+    border: 1px dashed rgba(139, 92, 246, 0.4);
+    color: #a78bfa;
+}
+
+.add-slot:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+}
+
+.add-icon {
+    margin-bottom: 6px;
+}
+
+/* Remove Button */
+.remove-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ef4444;
+    color: white;
+    border: 2px solid #0a0a0a;
+    /* seamless blend */
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+/* Grid Item Content */
+.slot-img {
+    width: 80%;
+    height: 70%;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+.slot-val {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 6px;
+}
+
+/* Comparison Bar */
+.value-comparison-bar {
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.value-side {
+    text-align: center;
+    flex: 1;
+}
+
+.value-side .label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: #666;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.value-side .value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.value-side .demand {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+.vs-badge {
+    color: #444;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+/* Tags */
+.trade-tags-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.trade-tag-btn {
+    background: #0f0f0f;
+    border: 1px solid #222;
+    padding: 8px 16px;
+    border-radius: 50px;
+    color: #ccc;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.trade-tag-btn:hover,
+.trade-tag-btn.active {
+    background: #1a1a1a;
+    border-color: #444;
+    color: #fff;
+}
+
+.trade-tag-btn .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+/* Note Section */
+.trade-note-section {
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.input-header label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.char-count {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.trade-note-input {
+    width: 100%;
+    background: #050505;
+    border: 1px solid #222;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.trade-note-input:focus {
+    outline: none;
+    border-color: var(--color-voxel-accent);
+}
+
+.help-text {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* Sticky Footer */
+.trade-actions-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid #1f1f1f;
+    padding-top: 20px;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+}
+
+.btn-publish {
+    background: var(--color-voxel-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn-publish:hover {
+    background: #7c3aed;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Modal */
+.voxel-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.voxel-modal.hidden {
+    display: none !important;
+}
+
+.modal-content {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.modal-search {
+    padding: 16px;
+    border-bottom: 1px solid #222;
+}
+
+#modal-search-input {
+    width: 100%;
+    background: #050505;
+    border: 1px solid #333;
+    padding: 10px;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.modal-items-grid {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    align-content: start;
+    /* Prevent vertical stretching */
+}
+
+.modal-item-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    aspect-ratio: 1;
+    /* Force square cards */
+}
+
+.modal-item-card:hover {
+    border-color: #8b5cf6;
+    background: #222;
+    transform: translateY(-2px);
+}
+
+.modal-item-img {
+    width: 100%;
+    height: 60%;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.modal-item-name {
+    font-size: 0.75rem;
+    color: #fff;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.modal-item-val {
+    font-size: 0.7rem;
+    color: #8b5cf6;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .trade-sides-container {
+        flex-direction: column;
+    }
+
+    .items-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .modal-items-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* =========================================
+   TRADE PAGES & FEED STYLES
+   ========================================= */
+
+/* Trade Feed Grid */
+.trade-feed-wrapper,
+.single-trade-wrapper {
+    padding: 40px 0;
+    min-height: 80vh;
+}
+
+.feed-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.trade-feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Trade Card (Feed Item) */
+.trade-card {
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.2s;
+    text-decoration: none;
+    display: block;
+}
+
+.trade-card:hover {
+    border-color: var(--color-voxel-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+}
+
+.trade-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.trade-time {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.trade-card-content {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.trade-card-side {
+    flex: 1;
+    text-align: center;
+}
+
+.side-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.items-preview {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    min-height: 50px;
+    align-items: center;
+}
+
+.preview-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #111;
+    border: 1px solid #222;
+    padding: 2px;
+}
+
+.more-items {
+    width: 40px;
+    height: 40px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: #888;
+    font-weight: 700;
+}
+
+.side-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-voxel-accent);
+}
+
+.trade-vs {
+    font-size: 1.5rem;
+    color: #444;
+    font-weight: 800;
+}
+
+.trade-card-footer {
+    font-size: 0.8rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.trade-creator svg {
+    vertical-align: middle;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-pending { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+.status-accepted { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+.status-rejected { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.status-countered { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+.status-completed { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
+
+/* Single Trade Page */
+.trade-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.trade-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.trade-meta {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.trade-display-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.trade-display-side {
+    flex: 1;
+}
+
+.side-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.trade-items-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.trade-item-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+.trade-item-img {
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.trade-item-name {
+    font-size: 0.8rem;
+    color: #fff;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.trade-item-value {
+    font-size: 0.75rem;
+    color: var(--color-voxel-accent);
+    font-weight: 700;
+}
+
+.side-total {
+    text-align: center;
+    padding: 12px;
+    background: #111;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.side-total strong {
+    color: var(--color-voxel-accent);
+    font-size: 1.2rem;
+}
+
+/* Trade Note */
+.trade-note-display {
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.trade-note-display h4 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.trade-note-display p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Trade Actions */
+.trade-actions-panel {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.trade-action-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-accept {
+    background: #22c55e;
+    color: white;
+}
+
+.btn-accept:hover {
+    background: #16a34a;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.btn-reject {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-reject:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-counter {
+    background: #eab308;
+    color: #000;
+}
+
+.btn-counter:hover {
+    background: #ca8a04;
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+/* Chat Interface */
+.trade-chat-section {
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.trade-chat-section h3 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 16px;
+    background: #050505;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.chat-loading {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+}
+
+.message-bubble {
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    max-width: 70%;
+}
+
+.message-sent {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    margin-left: auto;
+}
+
+.message-received {
+    background: #111;
+    border: 1px solid #222;
+}
+
+.message-author {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-voxel-accent);
+    margin-bottom: 4px;
+}
+
+.message-text {
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 12px;
+}
+
+#chat-input {
+    flex: 1;
+    background: #111;
+    border: 1px solid #222;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    resize: none;
+    font-family: inherit;
+}
+
+#chat-input:focus {
+    outline: none;
+    border-color: var(--color-voxel-accent);
+}
+
+.btn-send-message {
+    background: var(--color-voxel-accent);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-send-message:hover {
+    background: #7c3aed;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 40px;
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+}
+
+.login-prompt a {
+    color: var(--color-voxel-accent);
+    font-weight: 600;
+}
+
+.no-trades {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.no-trades a {
+    color: var(--color-voxel-accent);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .trade-display-container {
+        flex-direction: column;
+    }
+    .trade-actions-panel {
+        flex-direction: column;
+    }
+    .trade-feed-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Trade Success Notification */
+.trade-notification {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    background: #0a0a0a;
+    border: 1px solid #1f1f1f;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.trade-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-success {
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+.notification-error {
+    border-color: #ef4444;
+    color: #ef4444;
+}
